@@ -5,31 +5,47 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace LabTiaraju.Model
-{
+{    
     public class ContextoDB
-    {
+    {               
 
-        public static bool ConexaoBanco()
+        public static void ConexaoBanco()
         {
-            bool resultadoConexao = false;
-            var stringConexao = "Server=localhost;Database=labtiaraju;Uid=root;Pwd=root";
-            //var stringConexao = "Server=localhost;Database=labtiaraju;Uid=root;Pwd=root;SslMode=Preferred";
+            string stringConexao = "Server=localhost;Database=labtiaraju;Uid=root;Pwd=root";
             MySqlConnection con = new MySqlConnection(stringConexao);
-            //string connection = "Server=localhost;Database=labtiaraju;Uid=root;Pwd= root";
 
+            try
+            {                
+                con.Open();
+                
+            }
+            catch (MySqlException e)
+            {                
+                Console.Write(e.Message.ToString());
+            }             
+
+        }
+
+        public static void FechaConexao()
+        {
+            string stringConexao = "Server=localhost;Database=labtiaraju;Uid=root;Pwd=root";
+            MySqlConnection con = new MySqlConnection(stringConexao);
 
             try
             {
-                con.Open();
-                resultadoConexao = true;
-            }
-            catch (Exception e)
+                con.Close();
+            }catch(Exception)
             {
-                Console.WriteLine("Erro = " + e.Message.ToString());
+                throw;
             }
-            
-            return resultadoConexao;
+        }
 
+        public static MySqlCommand CriaComando()
+        {
+            string stringConexao = "Server=localhost;Database=labtiaraju;Uid=root;Pwd=root";
+            MySqlConnection con = new MySqlConnection(stringConexao);
+
+           return con.CreateCommand();
         }
     }
 }

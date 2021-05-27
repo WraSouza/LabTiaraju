@@ -13,6 +13,28 @@
                        Margin="0,150,0,0"                       
                        TextColor="Black"
                        FontSize="25"/>
+
+                <Entry x:Name="entryUsuario"
+                       Placeholder="Informe Seu Usuário"/>
+
+                <Label Text="Senha"
+                       Margin="0,20,0,0"                       
+                       TextColor="Black"
+                       FontSize="25"/>
+
+                <Entry x:Name="entrySenhaUsuario"
+                       IsPassword="True"
+                       Opacity="0.5"
+                       FontAttributes="Bold"
+                       BackgroundColor="White"
+                       Placeholder="Informe Sua Senha"/>
+
+                <Button Text="Acessar"
+                        Margin="0,30,0,0"
+                        Clicked="abrirPrincipalView"
+                        BackgroundColor="Red"
+                        TextColor="White"/>
+
             </StackLayout>
         </Grid>
     </ContentPage.Content>
